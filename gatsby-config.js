@@ -28,5 +28,18 @@ module.exports = {
         icon: "./src/images/icon.png", // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        extensions: [".md", ".mdx"],
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "products",
+        path: `${__dirname}/src/data/products`,
+      },
+    },
   ],
 }
