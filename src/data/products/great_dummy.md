@@ -1,10 +1,14 @@
 ---
-name: Dummy X Pro
-slug: dummy-x-pro
-price: 149.99
+name: Great Dummy
+slug: great-dummy
+price: 104.99
 excerpt: Something that you trully need, but haven’t know about it yet
-image: images/products/dummy.svg
-description: description: >-
+image: ../../images/products/dummy.svg
+description: 
     Something that you trully need, but haven’t know about it yet. Multiple winner of Community Awarads.
-tag: master
+Awards:
+* Award Local 2020
+* Award Global 2019 
+* Best Value Award
+tag: popular
 ---
