@@ -11,7 +11,9 @@ export function useProducts() {
             slug
             price
             excerpt
-            image
+            image {
+              publicURL
+            }
             description
             tag
           }
@@ -22,7 +24,10 @@ export function useProducts() {
 
   return data.allMdx.nodes.map(product => ({
     name: product.frontmatter.name,
-    image: product.frontmatter.image,
+    image: product.frontmatter.image.publicURL,
+    slug: product.frontmatter.slug,
+    price: product.frontmatter.price,
+
     excerpt: product.excerpt,
   }))
 }

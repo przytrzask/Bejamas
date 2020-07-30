@@ -7,7 +7,6 @@ import ProductsList from "../components/HomePage/ProductsList"
 import { Container } from "../components/Grid"
 
 export default function IndexPage() {
-  console.log("dsfsdf")
   return (
     <Layout>
       <SEO title="Home" />

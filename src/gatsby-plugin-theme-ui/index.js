@@ -3,6 +3,7 @@ const LIGHT = "#C4C4C4"
 const PRIMARY = "#1C042E"
 const ACCENT = "#AB528D"
 const SECONDARY = "#FBE067"
+const LIGHT_ACCENT = "#331F41"
 
 const headingTextStandards = {
   fontFamily: "heading",
@@ -44,6 +45,7 @@ export default {
     secondary: SECONDARY,
     background: {
       primary: PRIMARY,
+      accent: LIGHT_ACCENT,
     },
     text: {
       heading: WHITE,
