@@ -1,9 +1,14 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { Badge, IconButton, jsx } from "theme-ui"
 import { Link } from "gatsby"
-import { Container } from "../components/Grid"
+
+import { Container, Row } from "../components/Grid"
+import basket from "../images/elements/basket.svg"
+import { useBasket } from "../components/BasketProvider/Basket"
 
 export default function Header() {
+  const { products } = useBasket()
+
   return (
     <header sx={styles.header}>
       <Container
@@ -19,9 +24,19 @@ export default function Header() {
           ],
         }}
       >
-        <Link to="/" sx={styles.mainLink}>
-          JAM SHOP
-        </Link>
+        <Row
+          styles={{
+            justifyContent: "space-between",
+          }}
+        >
+          <Link to="/" sx={styles.mainLink}>
+            JAM SHOP
+          </Link>
+          <IconButton>
+            <img src={basket} />
+            <Badge variant="circle">{products.length}</Badge>
+          </IconButton>
+        </Row>
       </Container>
     </header>
   )

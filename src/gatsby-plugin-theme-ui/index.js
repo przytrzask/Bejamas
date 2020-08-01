@@ -178,4 +178,15 @@ export default {
     "1": "100%",
     screen: "100vw",
   },
+  badges: {
+    circle: {
+      color: "background",
+      bg: "primary",
+      borderRadius: 10,
+      p: 1,
+      minWidth: 20,
+      mt: -3,
+      ml: -2,
+    },
+  },
 }
