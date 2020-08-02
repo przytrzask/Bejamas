@@ -1,6 +1,7 @@
 import React from "react"
 
 export function usePortal(id) {
+  console.log(id)
   const rootElRef = React.useRef(null)
 
   React.useEffect(() => {

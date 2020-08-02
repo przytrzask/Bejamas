@@ -60,8 +60,8 @@ export default {
       color: "text.body",
       backgroundColor: "background.primary",
       "*": {
-        "-webkit-font-smoothing": "antialiased",
-        "-moz-osx-font-smoothing": "grayscale",
+        webkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
       },
     },
     h1: {
@@ -179,6 +179,15 @@ export default {
     screen: "100vw",
   },
   badges: {
+    circleHighlighted: {
+      color: "background",
+      bg: "accent",
+      borderRadius: 10,
+      p: 1,
+      minWidth: 20,
+      mt: -3,
+      ml: -2,
+    },
     circle: {
       color: "background",
       bg: "primary",

@@ -5,11 +5,12 @@ import { jsx, Styled } from "theme-ui"
 import { Container, Col, Row } from "../components/Grid"
 import SEO from "../components/SEO"
 import Layout from "../components/Layout"
-import { BasketProvider, useBasket } from "../components/BasketProvider/Basket"
+import { BasketProvider, useBasket } from "../components/Basket"
 
 export const query = graphql`
   query($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
+      id
       frontmatter {
         name
         description
@@ -63,7 +64,7 @@ function Product({ product }) {
             </span>
             <button
               sx={{ variant: "button.primary", mx: ["auto", null, 0] }}
-              onClick={() => addProductToBasket()}
+              onClick={() => addProductToBasket(product.id)}
             >
               Add to cart
             </button>

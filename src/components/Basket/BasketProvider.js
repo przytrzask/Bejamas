@@ -5,18 +5,18 @@ export const BasketContext = React.createContext(undefined)
 
 export const BasketProvider = ({ children }) => {
   const [value, setValue] = useSessionStorage("productsBasket", [])
-  const [products, setProducts] = React.useState(value)
+  const [selectedProductIds, setSelectedIds] = React.useState(value)
 
   React.useEffect(() => {
-    setValue(products)
-  }, [setValue, products])
+    setValue(selectedProductIds)
+  }, [setValue, selectedProductIds])
 
   const addProductToBasket = React.useCallback(product => {
-    if (!products.includes(product)) setProducts([...products, product])
+    if (!selectedProductIds.includes(product)) { setSelectedIds([...selectedProductIds, product]) }
   })
 
   return (
-    <BasketContext.Provider value={{ products, addProductToBasket }}>
+    <BasketContext.Provider value={{ selectedProductIds, addProductToBasket }}>
       {children}
     </BasketContext.Provider>
   )

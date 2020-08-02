@@ -1,13 +1,23 @@
 /** @jsx jsx */
 import { Badge, IconButton, jsx } from "theme-ui"
 import { Link } from "gatsby"
+import React from "react"
+import { AnimatePresence } from "framer-motion"
 
 import { Container, Row } from "../components/Grid"
+import { Dropdown } from "./Dropdown/Dropdown"
+
 import basket from "../images/elements/basket.svg"
-import { useBasket } from "../components/BasketProvider/Basket"
+import { useBasket, Basket } from "../components/Basket"
 
 export default function Header() {
-  const { products } = useBasket()
+  const { selectedProductIds } = useBasket()
+  const [isOpen, setIsOpen] = React.useState(false)
+  const onOutClick = React.useCallback(() => setIsOpen(false))
+
+  const isBasketEmpty = React.useMemo(() => selectedProductIds.length < 1, [
+    selectedProductIds,
+  ])
 
   return (
     <header sx={styles.header}>
@@ -27,24 +37,30 @@ export default function Header() {
         <Row
           styles={{
             justifyContent: "space-between",
+            position: "relative",
           }}
         >
           <Link to="/" sx={styles.mainLink}>
             JAM SHOP
           </Link>
-          <IconButton>
+          <IconButton disabled={isBasketEmpty} onClick={() => setIsOpen(true)}>
             <img src={basket} />
-            <Badge variant="circle">{products.length}</Badge>
+            <Badge variant={isBasketEmpty ? "circle" : "circleHighlighted"}>
+              {selectedProductIds.length}
+            </Badge>
           </IconButton>
+          <AnimatePresence>
+            {isOpen && (
+              <Dropdown onOutClick={onOutClick}>
+                <Basket />
+              </Dropdown>
+            )}
+          </AnimatePresence>
         </Row>
       </Container>
     </header>
   )
 }
-
-Header.propTypes = {}
-
-Header.defaultProps = {}
 
 const styles = {
   header: {
@@ -54,6 +70,7 @@ const styles = {
     left: 0,
     width: "1",
     background: "transparent",
+    zIndex: 4,
   },
   mainLink: {
     variant: "text.link",
