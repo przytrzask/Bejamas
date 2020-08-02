@@ -1,12 +1,15 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { Row, Col } from "../../Grid"
 
+import { useSiteData } from "../../../hooks/useSiteData"
+
+import { Row, Col } from "../../Grid"
 import HeroBackground from "../../../images/elements/hero_background.svg"
 import HeroImage from "../../../images/elements/monitor.svg"
 import HeroDecor from "../../../images/elements/hero_decor.svg"
 
 function HomepageHero() {
+  const siteData = useSiteData()
   return (
     <section sx={{ paddingTop: [60, 60, 105] }}>
       <Row styles={{ justifyContent: ["center"] }}>
@@ -14,13 +17,20 @@ function HomepageHero() {
           <img src={HeroImage} alt="Vector Monitor" sx={{ maxWidth: "1" }} />
         </Col>
         <Col styles={styles.leadWrapper}>
-          <Styled.h1 sx={styles.heading}>
-            Don't waste time
-            <br />
-            on boring things
-          </Styled.h1>
-          <button sx={{ variant: "button.primary", mx: ["auto", null, 0] }}>
-            GO EXPLORE
+          <Styled.h1
+            dangerouslySetInnerHTML={{
+              __html: siteData.hero.title,
+            }}
+            sx={styles.heading}
+          />
+          <button
+            sx={{
+              variant: "button.primary",
+              mx: ["auto", null, 0],
+              textTransform: "uppercase",
+            }}
+          >
+            {siteData.hero.cta.text}
           </button>
         </Col>
       </Row>

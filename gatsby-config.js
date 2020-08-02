@@ -41,5 +41,12 @@ module.exports = {
         path: `${__dirname}/src/data/products`,
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "index",
+        path: `${__dirname}/src/pages/product`,
+      },
+    },
   ],
 }

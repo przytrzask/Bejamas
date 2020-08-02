@@ -3,16 +3,20 @@ import { jsx, Styled, Flex } from "theme-ui"
 import { Link } from "gatsby"
 
 import { useProducts } from "../../../hooks/useProducts"
+import { useSiteData } from "../../../hooks/useSiteData"
 
 function List() {
   const products = useProducts()
+  const siteData = useSiteData()
 
   return (
     <section sx={{ paddingTop: [60, 60, 105] }}>
-      <h2>Explore community choices</h2>
-      <p>
-        Updated daily based on most popular choices <br /> among dev community
-      </p>
+      <h2>{siteData.title}</h2>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: siteData.lead,
+        }}
+      />
       {/* @todo add carousel like component */}
       <Flex
         sx={{
