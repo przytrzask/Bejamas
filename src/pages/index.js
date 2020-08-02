@@ -5,15 +5,18 @@ import SEO from "../components/SEO"
 import Hero from "../components/HomePage/Hero"
 import ProductsList from "../components/HomePage/ProductsList"
 import { Container } from "../components/Grid"
+import { BasketProvider } from "../components/Basket"
 
 export default function IndexPage() {
   return (
-    <Layout>
-      <SEO title="Home" />
-      <Container>
-        <Hero />
-        <ProductsList />
-      </Container>
-    </Layout>
+    <BasketProvider>
+      <Layout>
+        <SEO title="Home" />
+        <Container>
+          <Hero />
+          <ProductsList />
+        </Container>
+      </Layout>
+    </BasketProvider>
   )
 }

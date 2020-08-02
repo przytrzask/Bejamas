@@ -15,8 +15,6 @@ exports.createPages = async({ actions, graphql, reporter }) => {
     reporter.panic("failed to create pages", result.errors)
   }
 
-  console.log(result.data.allMdx.nodes)
-
   const products = result.data.allMdx.nodes
   products.forEach(product => {
     actions.createPage({

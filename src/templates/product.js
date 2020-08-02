@@ -4,12 +4,13 @@ import { jsx, Styled } from "theme-ui"
 
 import { Container, Col, Row } from "../components/Grid"
 import SEO from "../components/SEO"
-
 import Layout from "../components/Layout"
+import { BasketProvider, useBasket } from "../components/Basket"
 
 export const query = graphql`
   query($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
+      id
       frontmatter {
         name
         description
@@ -23,9 +24,21 @@ export const query = graphql`
   }
 `
 
-const ProductTemplate = ({ data: { mdx: product } }) => (
-  <Layout>
-    <SEO title={product.frontmatter.name} />
+const ProductTemplate = ({ data: { mdx: product } }) => {
+  return (
+    <BasketProvider>
+      <Layout>
+        <SEO title={product.frontmatter.name} />
+        <Product product={product} />
+      </Layout>
+    </BasketProvider>
+  )
+}
+
+function Product({ product }) {
+  const { addProductToBasket } = useBasket()
+
+  return (
     <Container>
       <section sx={{ paddingTop: [60, 60, 105] }}>
         <Row styles={{ justifyContent: ["center"] }}>
@@ -49,7 +62,10 @@ const ProductTemplate = ({ data: { mdx: product } }) => (
             <span sx={styles.price}>
               <strong>${product.frontmatter.price}</strong>
             </span>
-            <button sx={{ variant: "button.primary", mx: ["auto", null, 0] }}>
+            <button
+              sx={{ variant: "button.primary", mx: ["auto", null, 0] }}
+              onClick={() => addProductToBasket(product.id)}
+            >
               Add to cart
             </button>
           </Col>
@@ -57,8 +73,8 @@ const ProductTemplate = ({ data: { mdx: product } }) => (
         <img />
       </section>
     </Container>
-  </Layout>
-)
+  )
+}
 
 export default ProductTemplate
 

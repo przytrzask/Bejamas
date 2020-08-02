@@ -5,6 +5,7 @@ export function useProducts() {
     query {
       allMdx {
         nodes {
+          id
           excerpt
           frontmatter {
             name
@@ -29,5 +30,6 @@ export function useProducts() {
     price: product.frontmatter.price,
 
     excerpt: product.excerpt,
+    id: product.id,
   }))
 }
