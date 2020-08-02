@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 export function useProducts() {
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMdx(filter: { frontmatter: { slug: { ne: null } } }) {
         nodes {
           id
           excerpt

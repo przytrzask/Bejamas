@@ -25,7 +25,7 @@ export function Basket() {
                 justifySelf: "end",
               }}
             >
-              {product.price}
+              ${product.price}
             </span>
           </li>
         ))}
@@ -46,5 +46,6 @@ const listStyles = {
     justifyContent: "space-between",
     listStyleType: "none",
     gridTemplateColumns: "30px 1fr 50px",
+    p: 1,
   },
 }

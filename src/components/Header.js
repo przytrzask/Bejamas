@@ -43,7 +43,11 @@ export default function Header() {
           <Link to="/" sx={styles.mainLink}>
             JAM SHOP
           </Link>
-          <IconButton disabled={isBasketEmpty} onClick={() => setIsOpen(true)}>
+          <IconButton
+            sx={styles.button}
+            disabled={isBasketEmpty}
+            onClick={() => setIsOpen(true)}
+          >
             <img src={basket} />
             <Badge variant={isBasketEmpty ? "circle" : "circleHighlighted"}>
               {selectedProductIds.length}
@@ -64,7 +68,8 @@ export default function Header() {
 
 const styles = {
   header: {
-    padding: "20px 0",
+    py: "20px",
+    px: [2, null],
     position: "absolute",
     top: 0,
     left: 0,
@@ -77,5 +82,9 @@ const styles = {
     color: "white",
     fontWeight: "bold",
     fontSize: 22,
+  },
+  button: {
+    width: "auto",
+    height: "auto",
   },
 }

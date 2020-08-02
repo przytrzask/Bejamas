@@ -56,7 +56,7 @@ const dropdownStyles = {
   width: 300,
   height: 300,
   right: 0,
-  top: 55,
+  top: 70,
   bg: "primary",
   border: "2px solid white",
 }
