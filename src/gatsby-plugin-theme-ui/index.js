@@ -138,6 +138,14 @@ export default {
         color: "text.accent",
       },
     },
+    linkNeutral: {
+      color: "text.body",
+      textDecoration: "none",
+      fontWeight: "500",
+      "&:hover": {
+        color: "text.accent",
+      },
+    },
   },
   button: {
     primary: {

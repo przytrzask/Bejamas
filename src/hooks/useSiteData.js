@@ -24,7 +24,6 @@ export function useSiteData() {
   `)
 
   const { frontmatter } = data.allMdx.edges[0].node
-  console.log(frontmatter)
 
   return {
     lead: frontmatter.lead,
