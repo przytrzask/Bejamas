@@ -11,7 +11,7 @@ import { useBasket } from "../../../components/Basket"
 import arrow from "../../../images/elements/arrow.svg"
 import plus from "../../../images/elements/plus.svg"
 
-const ARTICLE_WIDTH = 265
+const ARTICLE_WIDTH = 275
 // aproximately since it is taken form themeUI
 const ARTICLE_MARGIN = 25
 
