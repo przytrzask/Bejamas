@@ -49,7 +49,10 @@ export default function Header() {
             onClick={() => setIsOpen(true)}
           >
             <img src={basket} />
-            <Badge variant={isBasketEmpty ? "circle" : "circleHighlighted"}>
+            <Badge
+              data-cy="basket-counter"
+              variant={isBasketEmpty ? "circle" : "circleHighlighted"}
+            >
               {selectedProductIds.length}
             </Badge>
           </IconButton>
